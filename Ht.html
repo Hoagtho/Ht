@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chấp nhận điều khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .checkbox-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chấp nhận điều khoản</h1>
+        <form id="termsForm">
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="term1"> Chấp nhận làm người yêu tôi
+                </label>
+                <label>
+                    <input type="checkbox" id="term2"> Chấp nhận để tôi chăm sóc
+                </label>
+            </div>
+            <button id="submitBtn" disabled>Đồng ý</button>
+        </form>
+    </div>
+
+    <script>
+        const term1 = document.getElementById("term1");
+        const term2 = document.getElementById("term2");
+        const submitBtn = document.getElementById("submitBtn");
+
+        function checkTerms() {
+            submitBtn.disabled = !(term1.checked && term2.checked);
+        }
+
+        term1.addEventListener("change", checkTerms);
+        term2.addEventListener("change", checkTerms);
+    </script>
+</body>
+</html>
